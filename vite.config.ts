@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { viteMockServe } from "vite-plugin-mock"
 import path from 'path'
 
 // element 自动导入
@@ -15,6 +16,9 @@ export default defineConfig({
   base: './', //打包路径
   plugins: [
     vue(),
+    viteMockServe({
+      supportTs: true 
+  }),
     // AutoImport({
     //   resolvers: [ElementPlusResolver()],
     // }),
@@ -59,13 +63,13 @@ export default defineConfig({
     https: false, // 是否启用 http 2
     port: 9000,
     strictPort: false, //设为true时端口被占用则直接退出，不会尝试下一个可用端口
-    proxy: {
-      '/api': {
-        target: 'http://192.168.99.223:3000', //代理接口
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-    },
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://192.168.99.223:3000', //代理接口
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/api/, ''),
+    //   },
+    // },
   },
   // 生产环境打包配置
   //去除 console debugger

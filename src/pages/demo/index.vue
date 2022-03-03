@@ -12,6 +12,8 @@
 import { useMainStore } from '@/store/mian'
 import HelloVue from '@/components/Hello.vue'
 import { NButton } from 'naive-ui'
+import demoApi from '@/service/api/demo/demo' // 引入封装完成的API
+import { onMounted } from 'vue'
 
 const mainStore = useMainStore()
 
@@ -20,6 +22,11 @@ const updateName = () => {
     name: '名称被修改了,nameLength也随之改变了',
   })
 }
+onMounted(() => {
+  demoApi.getList({ id: 232, adminName: 'zhang' }).then((res) => {
+    console.log(res)
+  })
+})
 </script>
 
 <style lang="scss" scoped>

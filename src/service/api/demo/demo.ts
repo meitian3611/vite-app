@@ -3,9 +3,13 @@ import http from '@/service/axios'
 import * as T from './types'
 
 const loginApi: T.ILoginApi = {
-  login(params) {
-    return http.post('/login', params)
+  
+  test(params) {
+    return http.get('/getUsers', params)
   },
+  getList(params){
+    return http.get('/getList', params)
+  }
 }
 
 export default loginApi
