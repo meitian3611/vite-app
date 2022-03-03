@@ -1,5 +1,5 @@
 //login.ts
-import http from '@/service/http'
+import http from '@/service/axios'
 import * as T from './types'
 
 const loginApi: T.ILoginApi = {

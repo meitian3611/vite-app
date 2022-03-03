@@ -1,6 +1,12 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
+
+// element 自动导入
+// import AutoImport from 'unplugin-auto-import/vite'
+// import Components from 'unplugin-vue-components/vite'
+// import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+
 //@ts-ignore
 import viteCompression from 'vite-plugin-compression'
 
@@ -9,6 +15,12 @@ export default defineConfig({
   base: './', //打包路径
   plugins: [
     vue(),
+    // AutoImport({
+    //   resolvers: [ElementPlusResolver()],
+    // }),
+    // Components({
+    //   resolvers: [ElementPlusResolver()],
+    // }),
     // gzip压缩 生产环境生成 .gz 文件
     viteCompression({
       verbose: true,
@@ -23,6 +35,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, 'src'),
       '@static': path.resolve(__dirname, 'src/assets'),
+      'com': path.resolve(__dirname, 'src/components'),
     },
     // 导入时想要省略的扩展名列表  不建议使用 .vue 影响IDE和类型支持
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.json'],
@@ -62,6 +75,7 @@ export default defineConfig({
     emptyOutDir: true, // 默认情况下，若 outDir 在 root 目录下，则 Vite 会在构建时清空该目录。
     assetsDir: 'static', // 指定生成静态资源的存放路径
     minify: 'terser', // 混淆器 , terser 构建后文件体积更小
+    reportCompressedSize:false, // 启用/禁用 gzip 压缩大小报告。压缩大型输出文件可能会很慢，因此禁用该功能可能会提高大型项目的构建性能。
     terserOptions: {
       compress: {
         // 打包生产环境 去除 console 和 debug

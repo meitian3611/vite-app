@@ -71,20 +71,7 @@ npm init @vitejs/app vite_vue3_ts -- --template
 
 # yarn
 yarn create @vitejs/app vite_vue3_ts --template
-```
 
-这里我采用 `yarn` 来安装
-
-![](https://files.mdnice.com/user/16854/befdd482-25e0-43f9-a5e3-7b34a9d8696c.png)
-
-2. 第二步: 选择 `vue`回车 => `vue-ts`回车
-
-![](https://files.mdnice.com/user/16854/0280afe9-2ba2-4dce-bdc4-6b756151fd5a.png)
-![](https://files.mdnice.com/user/16854/d1a58b76-2bc7-489b-966c-fb2a4136e39a.png)
-
-3. 第三步: `cd` 到项目文件夹,安装依赖,启动项目
-
-```bash
 # 进入项目文件夹
 cd vite_vue3_ts
 # 安装依赖
@@ -92,8 +79,6 @@ yarn
 # 启动
 yarn dev
 ```
-
-![](https://files.mdnice.com/user/16854/64867857-9e79-426a-89e3-c92303934094.png)
 
 ## 约束代码风格
 

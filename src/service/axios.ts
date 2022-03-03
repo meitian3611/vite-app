@@ -8,11 +8,11 @@ axios.defaults.timeout = 0
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 axios.interceptors.request.use(
   (config): AxiosRequestConfig<any> => {
-    const token = window.sessionStorage.getItem('token')
-    if (token) {
-      //@ts-ignore
-      config.headers.token = token
-    }
+    // const token = window.sessionStorage.getItem('token')
+    // if (token) {
+    //   //@ts-ignore
+    //   config.headers.token = token
+    // }
     return config
   },
   (error) => {
@@ -21,10 +21,10 @@ axios.interceptors.request.use(
 )
 // 响应拦截
 axios.interceptors.response.use((res) => {
-  if (res.data.code === 111) {
-    sessionStorage.setItem('token', '')
-    // token过期操作
-  }
+  // if (res.data.code === 111) {
+  //   sessionStorage.setItem('token', '')
+  //   // token过期操作
+  // }
   return res
 })
 

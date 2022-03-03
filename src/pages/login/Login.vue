@@ -3,12 +3,14 @@
   <hr />
   <button @click="updateName">修改store中的name</button>
   <hr />
-
   <n-button>naive-ui</n-button>
+  <hr />
+  <hello-vue></hello-vue>
 </template>
 
 <script setup lang="ts">
 import { useMainStore } from '@/store/mian'
+import HelloVue from '@/components/Hello.vue'
 import { NButton } from 'naive-ui'
 
 const mainStore = useMainStore()
