@@ -1,5 +1,5 @@
 <template>
-  <div class="test">用户名:{{ mainStore.name }}<br />长度:{{ mainStore.nameLength }}</div>
+  <div class="test">用户名:{{ name }}<br />长度:{{ nameLength }}</div>
   <hr />
   <button @click="updateName">修改store中的name</button>
   <hr />
@@ -14,13 +14,19 @@ import HelloVue from '@/components/Hello.vue'
 import { NButton } from 'naive-ui'
 import demoApi from '@/service/api/demo/demo' // 引入封装完成的API
 import { onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
 
 const mainStore = useMainStore()
+const { name , nameLength} = storeToRefs(mainStore) // 如果采用解构的方式，必须使用 storeToRefs 才会存在响应式
 
 const updateName = () => {
-  mainStore.$patch({
-    name: '名称被修改了,nameLength也随之改变了',
-  })
+  // mainStore.$patch({
+  //   name: '我是第二种修改方式',
+  // })
+  // mainStore.$patch((state:any)=> {
+  //   state.name = "我是第三种修改方式"
+  // })
+  mainStore.nameChange("我是第四种修改方式")
 }
 onMounted(() => {
   demoApi.getList({ id: 232, adminName: 'zhang' }).then((res) => {
